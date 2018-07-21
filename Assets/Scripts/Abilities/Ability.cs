@@ -56,7 +56,6 @@ public abstract class Ability<T> : MonoBehaviour
     {
         if (_inCooldown)
         {
-            Debug.Log("Ability in cooldown");
             return;
         }
 
