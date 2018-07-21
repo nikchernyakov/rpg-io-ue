@@ -51,5 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95220516bad53c24da242c2f28c9ce53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityCooldown: 0
+  AbilityCooldown: 3
   AbilityCaster: {fileID: 0}
+  AttackPerfomanceTime: 1
+  AttackPerfomanceSpeed: 1
+  RotationSpeed: 5

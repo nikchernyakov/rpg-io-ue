@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5a86ac0a91a0e4bac59cb371b71d07, type: 3}
   m_Name: WarriorClassConfig
   m_EditorClassIdentifier: 
-  MoveConfig: {fileID: 0}
-  Weapon: {fileID: 0}
-  WeaponPosition: {fileID: 0}
+  HpConfig: {fileID: 11400000, guid: 2a9c539e05787a04a97c44d26147a0e4, type: 2}
+  MoveConfig: {fileID: 11400000, guid: 069f568f69ebe234e8ca6ac55d881111, type: 2}
+  ClassAbilities: {fileID: 114393608033531720, guid: fd32cc3b3d846344bb5f75eccbdc235b,
+    type: 2}
+  Weapon: {fileID: 114511235502838220, guid: 5a99ffcd2dc4d5e41b61f053a38c919a, type: 2}

@@ -5,9 +5,10 @@ public abstract class Ability<T> : MonoBehaviour
 {
     public float AbilityCooldown;
 
-    protected T AbilityCaster;
+    public T AbilityCaster;
     private bool _inCooldown = false;
-    private float _currentCooldown;
+    private float _currentCooldown = 0;
+    private bool _inAction = false;
 
     public void SetAbilityCaster(T abilityCaster)
     {
@@ -21,6 +22,11 @@ public abstract class Ability<T> : MonoBehaviour
         {
             CheckCooldown();
         }
+
+        if (_inAction)
+        {
+            AbilityAction();
+        }
     }
 
     private void CheckCooldown()
@@ -29,13 +35,18 @@ public abstract class Ability<T> : MonoBehaviour
         {
             _currentCooldown -= Time.deltaTime;
         }
-        else
+        else if (_inCooldown)
         {
             _inCooldown = false;
             _currentCooldown = 0;
         }
     }
 
+    public void StopAction()
+    {
+        _inAction = false;
+    }
+    
     public bool IsInCooldown()
     {
         return _inCooldown;
@@ -48,11 +59,15 @@ public abstract class Ability<T> : MonoBehaviour
             Debug.Log("Ability in cooldown");
             return;
         }
+
+        _inAction = true;
+        AbilityStartAction();
         
-        AbilityAction();
         _inCooldown = true;
         _currentCooldown = AbilityCooldown;
     }
+
+    protected abstract void AbilityStartAction();
 
     protected abstract void AbilityAction();
 }

@@ -3,7 +3,8 @@
 public class Hero : Liveble, IAbilityCaster
 {
     public HeroClassAbilities ClassAbilities;
-    public GameObject Weapon;
+    public HeroWeapon Weapon;
+    public Transform LookPosition;
 
     private HeroMoveControl _heroMoveControl;
     private Quaternion _startRotation;
@@ -40,14 +41,15 @@ public class Hero : Liveble, IAbilityCaster
 
     public void InitClassAbilities(HeroClassAbilities classAbilities)
     {
-        ClassAbilities = classAbilities;
+        ClassAbilities = Instantiate(classAbilities);
+        ClassAbilities.transform.parent = transform;
         foreach (var heroAbility in ClassAbilities.GetAbilityList())
         {
             heroAbility.SetAbilityCaster(this);
         }
     }
 
-    public void InitWeapon(GameObject weapon)
+    public void InitWeapon(HeroWeapon weapon)
     {
         // Set start rotation and save current
         var currentRotation = transform.rotation;
@@ -61,5 +63,10 @@ public class Hero : Liveble, IAbilityCaster
         
         // Return curent rotation
         transform.rotation = currentRotation;
+    }
+
+    public float GetLookAngle()
+    {
+        return MathUtils.GetPointOnTargetLookAngle(transform.position, LookPosition.position);
     }
 }

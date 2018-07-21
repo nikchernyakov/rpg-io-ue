@@ -4,8 +4,7 @@ public static class MouseUtils {
     
     public static float GetMouseAndTargetAngle(Vector3 targetPosition)
     {
-        var lookPos = GetMousePosition() - targetPosition;
-        return Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+        return MathUtils.GetPointOnTargetLookAngle(targetPosition, GetMousePosition());
     }
 
     public static Vector3 GetMousePosition()

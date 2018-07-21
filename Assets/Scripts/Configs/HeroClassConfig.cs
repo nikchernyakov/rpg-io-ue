@@ -6,5 +6,5 @@ public class HeroClassConfig : ScriptableObject
     public HpConfig HpConfig;
     public MoveConfig MoveConfig;
     public HeroClassAbilities ClassAbilities;
-    public GameObject Weapon;
+    public HeroWeapon Weapon;
 }
