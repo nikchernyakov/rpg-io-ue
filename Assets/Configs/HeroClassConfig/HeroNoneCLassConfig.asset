@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5a86ac0a91a0e4bac59cb371b71d07, type: 3}
+  m_Name: HeroNoneCLassConfig
+  m_EditorClassIdentifier: 
+  HpConfig: {fileID: 11400000, guid: 4c2e543061de34c4fa23fa9d1557d618, type: 2}
+  MoveConfig: {fileID: 11400000, guid: 14461e75d2d9e084a89cb8b196a115cf, type: 2}
+  ClassAbilities: {fileID: 114378639601405998, guid: 9b7480c3f122de4498bcda65b1fabb23,
+    type: 2}
+  Weapon: {fileID: 0}

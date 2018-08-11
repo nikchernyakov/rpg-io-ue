@@ -1,11 +1,14 @@
-﻿
-public class ClassSetter
+﻿public static class ClassSetter
 {
     public static void SetClassToHero(Hero hero, HeroClassConfig heroClassConfig)
     {
         hero.SetMoveConfig(heroClassConfig.MoveConfig);
-        hero.HpConfig = heroClassConfig.HpConfig;
+        hero.SetHpConfig(heroClassConfig.HpConfig);
         hero.InitClassAbilities(heroClassConfig.ClassAbilities);
-        hero.InitWeapon(heroClassConfig.Weapon);
+
+        if (heroClassConfig.Weapon != null)
+        {
+            hero.InitWeapon(heroClassConfig.Weapon);
+        }
     }
 }

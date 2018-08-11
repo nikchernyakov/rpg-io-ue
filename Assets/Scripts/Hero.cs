@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-public class Hero : Liveble, IAbilityCaster
+[RequireComponent(typeof(Liveble))]
+[RequireComponent(typeof(HeroMoveControl))]
+public class Hero : MonoBehaviour, IAbilityCaster
 {
     public HeroClassAbilities ClassAbilities;
     public HeroWeapon Weapon;
@@ -8,17 +10,31 @@ public class Hero : Liveble, IAbilityCaster
 
     private HeroMoveControl _heroMoveControl;
     private Quaternion _startRotation;
+    private Liveble _liveble;
+
+    public Liveble GetLiveble()
+    {
+        return _liveble;
+    }
     
+    private void Awake()
+    {
+        _heroMoveControl = GetComponent<HeroMoveControl>();
+        _liveble = GetComponent<Liveble>();
+    }
+
     void Start()
     {
         _startRotation = transform.rotation;
-        _heroMoveControl = GetComponent<HeroMoveControl>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckAttackAbilityButton();
+        if (ClassAbilities != null)
+        {
+            CheckAttackAbilityButton();
+        }
     }
 
     private void CheckAttackAbilityButton()
@@ -68,5 +84,11 @@ public class Hero : Liveble, IAbilityCaster
     public float GetLookAngle()
     {
         return MathUtils.GetPointOnTargetLookAngle(transform.position, LookPosition.position);
+    }
+
+    public void SetHpConfig(HpConfig hpConfig)
+    {
+        _liveble.HpConfig = hpConfig;
+        _liveble.InitHp();
     }
 }
